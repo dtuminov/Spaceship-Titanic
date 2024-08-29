@@ -84,5 +84,5 @@ async def prediction(item: Item):
 
 @app.get("/get_model")
 async def download_file():
-    return FileResponse(path='Kosmo_titan/spaceship-titanic/ans.csv', media_type='application/octet-stream',
+    return FileResponse(path='my-model.skops', media_type='application/octet-stream',
                         filename='Обученная модель.skops')
