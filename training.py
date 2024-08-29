@@ -144,48 +144,4 @@ model.predict(test)
 b = model.predict(test)
 b = b > 0
 create_csv(b)
-unknown_types = get_untrusted_types(file="my-model.skops")
-model2 = sio.load('my-model.skops', trusted=unknown_types)
-arr = ['0013_01','Earth',True,'G/3/S','TRAPPIST-1e',27.0,False,0.0,0.0,0.0,0.0,0.0,'Nelly Carsonin']
-arr[2] = int(arr[2])
-arr[6] = int(arr[6])
-if arr[1] == 'Earth':
-    arr[1] = 1
-elif arr[1] == 'Europa':
-    arr[1] = 0
-elif arr[1] == 'Mars':
-    arr[1] = 2
-if arr[4] == 'TRAPPIST-1e':
-    arr[4] = 0
-elif arr[4] == '55 Cancri e':
-    arr[4] = 1
-elif arr[4] == 'PSO J318.5-22':
-    arr[4] = 2
 
-str = arr[3]
-print(str[0])
-if str[0] == 'D':
-    arr[3] = 0
-elif str[0] == 'B':
-    arr[3] = 1
-elif str[0] == 'C':
-    arr[3] = 2
-elif str[0] == 'A':
-    arr[3] = 3
-elif str[0] == 'E':
-    arr[3] = 4
-elif str[0] == 'F':
-    arr[3] = 5
-elif str[0] == 'T':
-    arr[3] = 6
-elif str[0] == 'G':
-    arr[3] = 7
-
-arr = np.asarray(arr)
-arr = np.delete(arr, [0, 12])
-arr = arr.tolist()
-int_list = [int(float(i)) for i in arr]
-int_list = np.asarray(int_list)
-int_list = int_list.reshape(1, -1)
-print(int_list)
-model2.predict(int_list)
